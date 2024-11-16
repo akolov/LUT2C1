@@ -3,7 +3,9 @@ import os
 import subprocess
 import uuid
 import xml.etree.ElementTree as ET
+
 from typing import List
+
 
 SUPPORTED_EXTENSIONS: List[str] = [".3dl", ".cube"]
 
@@ -65,7 +67,6 @@ def generate_icc_and_costyle(file_path: str, fcrv_value: str) -> None:
     ET.SubElement(root, "E", K="StyleSource", V="Styles")
     ET.SubElement(root, "E", K="UUID", V=generated_uuid)
 
-    # Write XML to file
     tree = ET.ElementTree(root)
     tree.write(costyle_file, encoding="utf-8", xml_declaration=True)
     print(f"Generated Capture One style file: {costyle_file}")
